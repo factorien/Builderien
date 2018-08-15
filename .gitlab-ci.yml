@@ -52,6 +52,7 @@ compile-cljs:
     - gem install sass
 
   script:
+    - WEBMAN_WEBSITE=iranclojure.ir lein clean
     - WEBMAN_WEBSITE=iranclojure.ir lein cljsbuild once min
     - mkdir resources/public/css
     - WEBMAN_WEBSITE=iranclojure.ir lein sass-compile
@@ -66,3 +67,4 @@ deploy:
   script:
     - ls
     - scp -r ./public www@iranclojure.ir:/home/www/iranclojure.ir
+    - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
