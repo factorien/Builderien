@@ -62,9 +62,9 @@ before_script:
     - WEBMAN_WEBSITE=$WEBSITE lein sass-compile
     - cp -r resources/public ~/public/$WEBSITE
     - ls ~/public
-  # artifacts:
-  #   paths:
-  #     - public/
+  artifacts:
+    paths:
+      - ~/public/
   # only:
   #   - stable
 
