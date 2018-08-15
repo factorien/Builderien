@@ -45,7 +45,8 @@ compile-cljs:
   stage: build
   script:
     - WEBMAN_WEBSITE=iranclojure.ir lein cljsbuild once min
-    - ls resources
+    - ls resources/public
+    - mkdir resources/public/css
     - pwd
     - WEBMAN_WEBSITE=iranclojure.ir lein sass-compile
     - cp -r resources/public ./public
