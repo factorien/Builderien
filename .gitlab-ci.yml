@@ -37,39 +37,48 @@ before_script:
   ##
   #- git config --global user.email "user@example.com"
   #- git config --global user.name "User name"
+  - mkdir ~/public
 
-compile-cljs:
+  # Lein installation
+  - apt-get update -y
+  - apt-get install default-jre -y
+  - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+  - chmod a+x lein
+  - export LEIN_ROOT=1
+  - PATH=$PATH:.
+  - lein deps
+  - gem install sass
+
+.build: &build
   stage: build
+  variables:
+    WEBSITE:
   before_script:
-    # Lein installation
-    - apt-get update -y
-    - apt-get install default-jre -y
-    - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-    - chmod a+x lein
-    - export LEIN_ROOT=1
-    - PATH=$PATH:.
-    - lein deps
-    - gem install sass
 
   script:
-    - WEBMAN_WEBSITE=iranclojure.ir lein clean
-    - WEBMAN_WEBSITE=iranclojure.ir lein cljsbuild once min
+    - WEBMAN_WEBSITE=$WEBSITE lein clean
+    - WEBMAN_WEBSITE=$WEBSITE lein cljsbuild once min
     - mkdir resources/public/css
-    - WEBMAN_WEBSITE=iranclojure.ir lein sass-compile
-    - cp -r resources/public ./public
-  artifacts:
-    paths:
-      - public
+    - WEBMAN_WEBSITE=$WEBSITE lein sass-compile
+    - cp -r resources/public ~/public/$WEBSITE
+    - ls ~/public
+  # artifacts:
+  #   paths:
+  #     - public/
   # only:
   #   - stable
 
+build:iranclojure:
+  <<: *build
+  variables:
+    WEBSITE: iranclojure.ir
 
-deploy:
+.deploy:
   stage: deploy
   script:
     - ls
-    - ssh www@iranclojure.ir 'rm -rf /home/www/iranclojure.ir'
-    - scp -r ./public www@iranclojure.ir:/home/www/iranclojure.ir
+    - ssh www@iranclojure.ir 'rm -rf /home/www/public && rm -rf /var/nginx/cache/*'
+    - scp -r ~/public www@iranclojure.ir:/home/www/public
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
-  # only:
-  #   - stable
+  only:
+    - stable
