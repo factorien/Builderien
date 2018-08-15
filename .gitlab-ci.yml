@@ -57,14 +57,20 @@ compile-cljs:
     - mkdir resources/public/css
     - WEBMAN_WEBSITE=iranclojure.ir lein sass-compile
     - cp -r resources/public ./public
+
   artifacts:
     paths:
       - public
+  only:
+    - stable
 
 
 deploy:
   stage: deploy
   script:
     - ls
+    - ssh www@iranclojure.ir 'rm -rf /home/www/iranclojure.ir'
     - scp -r ./public www@iranclojure.ir:/home/www/iranclojure.ir
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
+  only:
+    stable
