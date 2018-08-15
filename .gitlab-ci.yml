@@ -1,5 +1,12 @@
 before_script:
   ##
+  ## Assuming you created the SSH_KNOWN_HOSTS variable, uncomment the
+  ## following two lines.
+  ##
+  - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+  ##
   ## Install ssh-agent if not already installed, it is required by Docker.
   ## (change apt-get to yum if you use an RPM-based image)
   ##
@@ -31,23 +38,22 @@ before_script:
   #- git config --global user.email "user@example.com"
   #- git config --global user.name "User name"
 
-  # Lein installation
-  - apt-get update -y
-  - apt-get install default-jre -y
-  - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-  - chmod a+x lein
-  - export LEIN_ROOT=1
-  - PATH=$PATH:.
-  - lein deps
-  - gem install sass
-
 compile-cljs:
   stage: build
+  before_script:
+    # Lein installation
+    - apt-get update -y
+    - apt-get install default-jre -y
+    - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+    - chmod a+x lein
+    - export LEIN_ROOT=1
+    - PATH=$PATH:.
+    - lein deps
+    - gem install sass
+
   script:
     - WEBMAN_WEBSITE=iranclojure.ir lein cljsbuild once min
-    - ls resources/public
     - mkdir resources/public/css
-    - pwd
     - WEBMAN_WEBSITE=iranclojure.ir lein sass-compile
     - cp -r resources/public ./public
   artifacts:
@@ -58,4 +64,5 @@ compile-cljs:
 deploy:
   stage: deploy
   script:
+    - ls
     - scp -r ./public www@iranclojure.ir:/home/www/iranclojure.ir
