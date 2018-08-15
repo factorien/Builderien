@@ -73,6 +73,17 @@ build:iranclojure:
   variables:
     WEBSITE: iranclojure.ir
 
+build:radioboot:
+  <<: *build
+  variables:
+    WEBSITE: radioboot.com
+
+build:karajlug:
+  <<: *build
+  variables:
+    WEBSITE: karajlug.org
+
+
 .deploy:
   stage: deploy
   script:
