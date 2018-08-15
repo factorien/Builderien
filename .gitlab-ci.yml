@@ -30,3 +30,29 @@ before_script:
   ##
   #- git config --global user.email "user@example.com"
   #- git config --global user.name "User name"
+
+  # Lein installation
+  - apt-get update -y
+  - apt-get install default-jre -y
+  - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+  - chmod a+x lein
+  - export LEIN_ROOT=1
+  - PATH=$PATH:.
+  - lein deps
+
+compile-cljs:
+  stage: build
+  script:
+    - WEBMAN_WEBSITE=iranclojure.ir lein cljsbuild once min
+    - WEBMAN_WEBSITE=iranclojure.ir lein sass-compile
+    - cp -r resources/public ./public
+
+  artifact:
+    path:
+      - public
+
+
+deploy:
+  stage: deploy
+  script:
+    - scp -r ./public www@iranclojure.ir:/home/www/iranclojure.ir
