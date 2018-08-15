@@ -42,7 +42,7 @@
                     ~(clojure.core/format "sass/%s.sass:resources/public/css/web.css"
                                           (or (System/getenv "WEBMAN_WEBSITE")
                                               "web"))]
-            "sass-compile" ["shell" "sass" "-t compressed" ~(clojure.core/format "sass/%s.sass:resources/public/css/web.css"
+            "sass-compile" ["shell" "sass" "-t compressed" ~(clojure.core/format "sass/%s.sass:./resources/public/css/web.css"
                                                                                  (or (System/getenv "WEBMAN_WEBSITE")
                                                                                      "web"))]}
 
