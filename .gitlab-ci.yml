@@ -73,4 +73,4 @@ deploy:
     - scp -r ./public www@iranclojure.ir:/home/www/iranclojure.ir
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
   only:
-    stable
+    - stable
