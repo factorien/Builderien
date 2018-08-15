@@ -46,9 +46,8 @@ compile-cljs:
     - WEBMAN_WEBSITE=iranclojure.ir lein cljsbuild once min
     - WEBMAN_WEBSITE=iranclojure.ir lein sass-compile
     - cp -r resources/public ./public
-
-  artifact:
-    path:
+  artifacts:
+    paths:
       - public
 
 
