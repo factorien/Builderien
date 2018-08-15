@@ -1,12 +1,5 @@
 before_script:
   ##
-  ## Assuming you created the SSH_KNOWN_HOSTS variable, uncomment the
-  ## following two lines.
-  ##
-  - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
-
-  ##
   ## Install ssh-agent if not already installed, it is required by Docker.
   ## (change apt-get to yum if you use an RPM-based image)
   ##
@@ -30,6 +23,13 @@ before_script:
   ##
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
+
+  ##
+  ## Assuming you created the SSH_KNOWN_HOSTS variable, uncomment the
+  ## following two lines.
+  ##
+  - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
 
   ##
   ## Optionally, if you will be using any Git commands, set the user name and
