@@ -4,20 +4,17 @@ set -e
 
 websites=(
     iranclojure.ir
+    radioboot.com
+    karajlug.org
 )
-    # radioboot.com
-    # karajlug.org
 
 for i in ${websites[@]}
 do
+    echo "Building $i ..."
     mkdir -p public
     WEBMAN_WEBSITE=$i lein clean
     WEBMAN_WEBSITE=$i lein cljsbuild once min
     mkdir -p resources/public/css
     WEBMAN_WEBSITE=$i lein sass-compile
     cp -r resources/public ./public/$i
-    echo "<<<<<<<<<<<<"
-    ls ./public/$i
-    echo "<<<<<<<<<<<<<---"
-    ls ./public/
 done

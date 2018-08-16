@@ -31,13 +31,6 @@ before_script:
   - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
 
-  ##
-  ## Optionally, if you will be using any Git commands, set the user name and
-  ## and email.
-  ##
-  #- git config --global user.email "user@example.com"
-  #- git config --global user.name "User name"
-
 cache:
   paths:
     - public/
@@ -56,31 +49,12 @@ build:
     - gem install sass
   script:
     - mkdir -p public
+    - echo "0000000000"
     - ls public
     - bash ./scripts/build
   artifacts:
     paths:
       - public
-
-
-# .build: &build
-#   stage: build
-#   before_script:
-
-#   script:
-#     - mkdir .public
-#     - WEBMAN_WEBSITE=$WEBSITE lein clean
-#     - WEBMAN_WEBSITE=$WEBSITE lein cljsbuild once min
-#     - mkdir resources/public/css
-#     - WEBMAN_WEBSITE=$WEBSITE lein sass-compile
-#     - cp -r resources/public ./$WEBSITE
-#     - ls $WEBSITE
-#   artifacts:
-#     paths:
-#       - .$WEBSITE/
-#   # only:
-#   #   - stable
-
 
 deploy:
   stage: deploy
@@ -90,5 +64,3 @@ deploy:
     - ls ./public
     - scp -r public www@iranclojure.ir:/home/www/public
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
-  # only:
-  #   - stable
