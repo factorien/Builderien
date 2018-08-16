@@ -49,8 +49,6 @@ build:
     - gem install sass
   script:
     - mkdir -p public
-    - echo "0000000000"
-    - ls public
     - bash ./scripts/build
   artifacts:
     paths:
