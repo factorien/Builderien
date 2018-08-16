@@ -22,7 +22,7 @@
      :http-xhrio {:method          :get
                   :uri             (config/latest-posts-url)
                   :params          {:api_key "4b971bf2488e0901402faa2dc238e1a42c0eac4aa6e28108114823273929eeea"}
-
+                  :headers {:Access-Control-Allow-Origin js/window.location.host}
                   :timeout         8000
                   :response-format (ajax/json-response-format {:keywords? true})
                   :on-success      [:populate-topics]
