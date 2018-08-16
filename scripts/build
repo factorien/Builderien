@@ -4,9 +4,9 @@ set -e
 
 websites=(
     iranclojure.ir
-    radioboot.com
-    karajlug.org
 )
+    # radioboot.com
+    # karajlug.org
 
 for i in ${websites[@]}
 do

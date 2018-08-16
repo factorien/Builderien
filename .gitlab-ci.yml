@@ -38,19 +38,25 @@ before_script:
   #- git config --global user.email "user@example.com"
   #- git config --global user.name "User name"
 
-  # Lein installation
-  - apt-get update -y
-  - apt-get install default-jre -y
-  - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-  - chmod a+x lein
-  - export LEIN_ROOT=1
-  - PATH=$PATH:.
-  - lein deps
-  - gem install sass
+cache:
+  paths:
+    - public/
 
 build:
   stage: build
+  before_script:
+    # Lein installation
+    - apt-get update -y
+    - apt-get install default-jre -y
+    - wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+    - chmod a+x lein
+    - export LEIN_ROOT=1
+    - PATH=$PATH:.
+    - lein deps
+    - gem install sass
   script:
+    - mkdir -p public
+    - ls public
     - bash ./scripts/build
   artifacts:
     paths:
@@ -81,7 +87,7 @@ deploy:
   script:
     - ls
     - ssh www@iranclojure.ir 'rm -rf /home/www/public && rm -rf /var/nginx/cache/*'
-    - ls ./.public
+    - ls ./public
     - scp -r public www@iranclojure.ir:/home/www/public
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
   # only:
