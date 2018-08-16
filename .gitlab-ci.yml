@@ -37,7 +37,6 @@ before_script:
   ##
   #- git config --global user.email "user@example.com"
   #- git config --global user.name "User name"
-  - mkdir ~/public
 
   # Lein installation
   - apt-get update -y
@@ -56,15 +55,16 @@ before_script:
   before_script:
 
   script:
+    - mkdir .public
     - WEBMAN_WEBSITE=$WEBSITE lein clean
     - WEBMAN_WEBSITE=$WEBSITE lein cljsbuild once min
     - mkdir resources/public/css
     - WEBMAN_WEBSITE=$WEBSITE lein sass-compile
-    - cp -r resources/public ~/public/$WEBSITE
-    - ls ~/public
+    - cp -r resources/public ./$WEBSITE
+    - ls $WEBSITE
   artifacts:
     paths:
-      - ~/public/
+      - .$WEBSITE/
   # only:
   #   - stable
 
@@ -84,12 +84,31 @@ build:karajlug:
     WEBSITE: karajlug.org
 
 
-.deploy:
+.deploy: &deploy
   stage: deploy
+  variables:
+    WEBSITE:
   script:
     - ls
     - ssh www@iranclojure.ir 'rm -rf /home/www/public && rm -rf /var/nginx/cache/*'
-    - scp -r ~/public www@iranclojure.ir:/home/www/public
+    - ls ./$WEBSITE
+    - scp -r ./$WEBSITE www@iranclojure.ir:/home/www/$WEBSITE
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
-  only:
-    - stable
+  # only:
+  #   - stable
+
+
+deploy:iranclojure:
+  <<: *deploy
+  variables:
+    WEBSITE: iranclojure.ir
+
+deploy:radioboot:
+  <<: *deploy
+  variables:
+    WEBSITE: radioboot.com
+
+deploy:karajlug:
+  <<: *deploy
+  variables:
+    WEBSITE: karajlug.org
