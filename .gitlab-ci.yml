@@ -48,13 +48,6 @@ before_script:
   - lein deps
   - gem install sass
 
-variables:
-  V: iranclojure.ir,radioboot.com,karajlug.org
-  WEBSITES:
-    - iranclojure.ir
-    - radioboot.com
-    - karajlug.org
-
 build:
   stage: build
   script:
