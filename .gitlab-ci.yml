@@ -31,9 +31,6 @@ before_script:
   - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
 
-cache:
-  paths:
-    - public/
 
 build:
   stage: build
@@ -62,5 +59,7 @@ deploy:
     - ssh www@iranclojure.ir 'rm -rf /home/www/public && rm -rf /var/nginx/cache/*'
     - scp -r public www@iranclojure.ir:/home/www/public
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
+  dependencies:
+    - build
   only:
     - stable
