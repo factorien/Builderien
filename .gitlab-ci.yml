@@ -53,12 +53,14 @@ build:
   artifacts:
     paths:
       - public
+  only:
+    - stable
 
 deploy:
   stage: deploy
   script:
-    - ls
     - ssh www@iranclojure.ir 'rm -rf /home/www/public && rm -rf /var/nginx/cache/*'
-    - ls ./public
     - scp -r public www@iranclojure.ir:/home/www/public
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
+  only:
+    - stable
