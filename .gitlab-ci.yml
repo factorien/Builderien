@@ -52,8 +52,9 @@ build:
   stage: build
   script:
     - bash ./scripts/build
-  paths:
-    - public
+  artifacts:
+    paths:
+      - public
 
 
 # .build: &build
