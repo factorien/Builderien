@@ -48,67 +48,47 @@ before_script:
   - lein deps
   - gem install sass
 
-.build: &build
+variables:
+  V: iranclojure.ir,radioboot.com,karajlug.org
+  WEBSITES:
+    - iranclojure.ir
+    - radioboot.com
+    - karajlug.org
+
+build:
   stage: build
-  variables:
-    WEBSITE:
-  before_script:
-
   script:
-    - mkdir .public
-    - WEBMAN_WEBSITE=$WEBSITE lein clean
-    - WEBMAN_WEBSITE=$WEBSITE lein cljsbuild once min
-    - mkdir resources/public/css
-    - WEBMAN_WEBSITE=$WEBSITE lein sass-compile
-    - cp -r resources/public ./$WEBSITE
-    - ls $WEBSITE
-  artifacts:
-    paths:
-      - .$WEBSITE/
-  # only:
-  #   - stable
-
-build:iranclojure:
-  <<: *build
-  variables:
-    WEBSITE: iranclojure.ir
-
-build:radioboot:
-  <<: *build
-  variables:
-    WEBSITE: radioboot.com
-
-build:karajlug:
-  <<: *build
-  variables:
-    WEBSITE: karajlug.org
+    - bash ./scripts/build
+  paths:
+    - public
 
 
-.deploy: &deploy
+# .build: &build
+#   stage: build
+#   before_script:
+
+#   script:
+#     - mkdir .public
+#     - WEBMAN_WEBSITE=$WEBSITE lein clean
+#     - WEBMAN_WEBSITE=$WEBSITE lein cljsbuild once min
+#     - mkdir resources/public/css
+#     - WEBMAN_WEBSITE=$WEBSITE lein sass-compile
+#     - cp -r resources/public ./$WEBSITE
+#     - ls $WEBSITE
+#   artifacts:
+#     paths:
+#       - .$WEBSITE/
+#   # only:
+#   #   - stable
+
+
+deploy:
   stage: deploy
-  variables:
-    WEBSITE:
   script:
     - ls
     - ssh www@iranclojure.ir 'rm -rf /home/www/public && rm -rf /var/nginx/cache/*'
-    - ls ./$WEBSITE
-    - scp -r ./$WEBSITE www@iranclojure.ir:/home/www/$WEBSITE
+    - ls ./.public
+    - scp -r public www@iranclojure.ir:/home/www/public
     - ssh www@iranclojure.ir 'sudo systemctl restart nginx.service'
   # only:
   #   - stable
-
-
-deploy:iranclojure:
-  <<: *deploy
-  variables:
-    WEBSITE: iranclojure.ir
-
-deploy:radioboot:
-  <<: *deploy
-  variables:
-    WEBSITE: radioboot.com
-
-deploy:karajlug:
-  <<: *deploy
-  variables:
-    WEBSITE: karajlug.org
