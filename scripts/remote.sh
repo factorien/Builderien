@@ -1,14 +1,16 @@
 #! /bin/bash
 
 echo "[REMOTE]: Cleaning up..."
-rm -rf ~/resources
+rm -rf /home/www/resources
+mkdir -p /home/www/resources/$1
 echo "[REMOTE]: Extracting the package..."
-tar zxf ~/tmp/package.tar.gz
+cd /home/www/resources/$1
+tar zxf /home/www/tmp/package.tar.gz
 echo "[REMOTE]: Installing the content..."
-mkdir -p ~/www/
-cp -rv ~/resources/public/ ~/www/home/
-chmod 755 ~/www/home/ -R
+cp -rv /home/www/resources/$1 /home/www/public/
+chmod 755 /home/www/public/ -R
 echo "[REMOTE]: Cleaning up..."
-rm -rf ~/resources ~/tmp/
-mkdir -p ~/tmp
+cd ~
+rm -rf /home/www/resources /home/www/tmp/
+mkdir -p /home/www/tmp
 echo "[REMOTE]: Done"
