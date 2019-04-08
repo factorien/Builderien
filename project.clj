@@ -1,5 +1,5 @@
 (defproject webman "0.3.1"
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [reagent               "0.8.1"]
                  [re-frame              "0.10.5"]
