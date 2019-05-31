@@ -3,7 +3,7 @@
    [webman.i18n :refer [t]])
 
   (:require-macros
-   [webman.website :refer [get-config]]))
+   [webman.website :refer [get-config last-commit]]))
 
 
 (defn bar
@@ -22,4 +22,6 @@
         [:a {:href "http://opensource.org/licenses/mit-license.php"} "MIT"]
         ". The website content is licensed "
         [:a {:href "http://creativecommons.org/licenses/by-nc-sa/4.0/"} "CC BY NC SA 4.0"]
-        "."])]]])
+        "."])
+     [:p {:className "version"}
+      (last-commit)]]]])

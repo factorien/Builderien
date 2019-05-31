@@ -18,8 +18,7 @@
  :latest-posts-url "/c/42-category/karajlug/l/latest.json"
  ;; IMPORTANT NOTE: :name property of a linke should be a vector
  ;; even if you want it to be empty it should be an empty vector
- :navbar-menu {:left [{:name [:home_page "خانه"] :href "/"}
-                      {:name [:sessions "رویدادها"] :href "https://evand.com/events/karaj-lug"}
-                      {:name [:about_us  "درباره ما"] :href "/about"}]
+ :navbar-menu {:left [{:name [:sessions "رویدادها"] :href "https://evand.com/events/karaj-lug" :class "navbar-item"}
+                      {:name [:about_us  "درباره ما"] :href "/about" :class "navbar-item"}]
 
                :right [{:name [] :href "//twitter.com/karajlug" :icon "fab fa-twitter fa-lg"}]}}

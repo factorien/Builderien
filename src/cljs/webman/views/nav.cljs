@@ -10,10 +10,12 @@
   of the left side of navigation menu"
   (:left (get-config :navbar-menu)))
 
+
 (def right-side-menu-items
   "Returns a vector of hashmaps describing menu entries
   of the left side of navigation menu"
   (:right (get-config :navbar-menu)))
+
 
 (defn bar
   "Top navigation menu."
