@@ -8,7 +8,7 @@ Basically Webman created using several `clojure` macros which parse and provide 
 `clojurescript/re-frame` application in compile time based on the website.
 
 Clojure macros look for a environment variable called `WEBMAN_WEBSITE` that contains the domain name of the website and load the configuration
-for the given website from `./resources/websites/WEBSITE_NAME.edn` and load the stylesheet from `./sass/WEBSITE_NAME.sass`.
+for the given website from `./resources/websites/WEBSITE_WEBSITE.edn` and load the stylesheet from `./sass/WEBSITE_WEBSITE.sass`.
 
 So basically in order to add support for a new website all you have to do is to create those two files and set the environment variable.
 
@@ -20,8 +20,10 @@ If you use Emacs, navigate to a clojurescript file and start a figwheel REPL wit
 If you want to run the server on your terminal instead of Emacs just do as follows:
 
 ```
-$ lein figwheel dev
+$ WEBMAN_WEBSITE=example.com lein figwheel dev
 ```
+
+**NOTE**: replace `example.com` with the domain name of your website.
 
 in bother cases you should be able to connect to [http://localhost:3449](http://localhost:3449)
 
@@ -33,8 +35,10 @@ take leavrage of auto compiling the clojure macros as well.
 Compile css file automatically.
 
 ```
-lein sass
+WEBMAN_WEBSITE=example.com lein sass
 ```
+
+**NOTE**: replace `example.com` with the domain name of your website.
 
 ### Run tests:
 
