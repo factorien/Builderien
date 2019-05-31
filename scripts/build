@@ -8,6 +8,11 @@ websites=(
     karajlug.org
 )
 
+echo "Cleaning up"
+rm -rf ./public
+
+echo $(pwd)
+
 for i in ${websites[@]}
 do
     echo "Building $i ..."

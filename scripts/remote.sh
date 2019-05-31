@@ -7,7 +7,7 @@ echo "[REMOTE]: Extracting the package..."
 cd /home/www/resources/$1
 tar zxf /home/www/tmp/package.tar.gz
 echo "[REMOTE]: Installing the content..."
-cp -rv /home/www/resources/$1 /home/www/public/
+cp -rv /home/www/resources/$1/public/$1 /home/www/public/
 chmod 755 /home/www/public/ -R
 echo "[REMOTE]: Cleaning up..."
 cd ~
