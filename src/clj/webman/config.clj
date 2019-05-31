@@ -1,5 +1,5 @@
 ;; Webman - Static website generator
-;; Copyright (C) 2018-2019  Sameer Rahmani <lxsameer@gnu.org>
+;; Copyright (C) 2018-2019  Webman's Developers
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License
@@ -14,29 +14,14 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.config.core
-  (:require [clojure.java.io :as io]
-            [clojure.edn :as edn]
-            [webman.config.readers :as r]))
+(ns webman.config
+  (:require [webman.config.core :as c]))
 
 
-(defn website-name
-  "Return the website name from WEBMAN_WEBSITE env variable"
-  ([] (website-name "iranclojure.ir"))
-  ([default]
-   (or (System/getenv "WEBMAN_WEBSITE") default)))
-
-
-(defn get-config
+(defmacro get-config
   "Return the value of the given config `key` by reading the proper
   configuration file of the current website (set in WEBMAN_WEBSITE)
   or if the key is missing it would return the value from `default.edn`
   "
   [key]
-  (let [config-name (format "websites/%s.edn" (website-name))
-        resource    (io/resource config-name)
-        defaults    (edn/read-string {:readers r/edn-readers}
-                                     (slurp (io/resource "websites/default.edn")))
-        config      (merge defaults (edn/read-string {:readers r/edn-readers}
-                                                     (slurp resource)))]
-    (get config key)))
+  (c/get-config key))

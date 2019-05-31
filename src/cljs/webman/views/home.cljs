@@ -6,7 +6,7 @@
    [webman.config :as config]
    [webman.i18n   :refer [t]])
   (:require-macros
-   [webman.website :refer [get-config]]))
+   [webman.config :refer [get-config]]))
 
 (def digits
   {"1" "۱" "2" "۲" "3" "۳" "4" "۴" "5" "۵" "6" "۶" "7" "۷" "8" "۸" "9" "۹" "0" "۰"})

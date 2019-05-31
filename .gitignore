@@ -11,5 +11,5 @@ tmp/
 .lein-repl-history
 .lein-failures
 public/
-.#
-#.*
+.#*
+*#

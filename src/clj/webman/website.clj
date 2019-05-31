@@ -16,18 +16,9 @@
 
 (ns webman.website
   (:require [clojure.java.io :as io]
-            [clojure.edn :as edn]))
+            [clojure.edn :as edn]
+            [webman.config.readers :as r]))
 
-
-(defn asset
-  "Reader function for `#asset` edn tag which append a random querystring
-  to the assets url."
-  [url]
-  (format "%s?%s" url (int (* 100000000 (rand)))))
-
-;; EDN Readers
-(def readers
-  {'asset asset})
 
 
 (defn website-name
@@ -35,6 +26,7 @@
   ([] (website-name "iranclojure.ir"))
   ([default]
    (or (System/getenv "WEBMAN_WEBSITE") default)))
+
 
 (defmacro get-config
   "Return the value of the given config `key` by reading the proper
@@ -44,9 +36,9 @@
   [key]
   (let [config-name (format "websites/%s.edn" (website-name))
         resource    (io/resource config-name)
-        defaults    (edn/read-string {:readers readers}
+        defaults    (edn/read-string {:readers r/edn-readers}
                                      (slurp (io/resource "websites/default.edn")))
-        config      (merge defaults (edn/read-string {:readers readers}
+        config      (merge defaults (edn/read-string {:readers r/edn-readers}
                                                      (slurp resource)))]
     (get config key)))
 
