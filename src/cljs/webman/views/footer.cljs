@@ -3,7 +3,8 @@
    [webman.i18n :refer [t]])
 
   (:require-macros
-   [webman.website :refer [get-config last-commit]]))
+   [webman.website :refer [get-config]]
+   [webman.git :refer [last-commit]]))
 
 
 (defn bar
