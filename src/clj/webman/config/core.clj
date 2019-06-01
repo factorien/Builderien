@@ -40,3 +40,8 @@
         config      (merge defaults (edn/read-string {:readers r/edn-readers}
                                                      (slurp resource)))]
     (get config key)))
+
+
+(defn map-pages
+  [f]
+  (map f (get-config :webman/pages)))

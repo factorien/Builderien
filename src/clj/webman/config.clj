@@ -25,3 +25,7 @@
   "
   [key]
   (c/get-config key))
+
+(defmacro map-pages
+  [& body]
+  (c/map-pages (fn [page] page)))

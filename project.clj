@@ -1,12 +1,12 @@
 (defproject webman "0.3.1"
-  :dependencies [[org.clojure/clojure "1.10.0"]
+  :dependencies [[org.clojure/clojure "1.10.0-beta2"]
                  [org.clojure/clojurescript "1.10.238"]
                  [reagent               "0.8.1"]
                  [re-frame              "0.10.5"]
                  [day8.re-frame/http-fx "0.1.6"]
                  [com.andrewmcveigh/cljs-time "0.5.2"]
                  [com.taoensso/tempura  "1.2.1"]
-                 [org.eclipse.jgit "5.3.0.201903130848-r"]
+                 [org.eclipse.jgit      "5.3.0.201903130848-r"]
                  [secretary             "1.2.3"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]

@@ -1,0 +1,14 @@
+{:paths ["src/clj" "resources" "target" "src/cljs"]
+ :aliases {:fig {:main-opts ["-m" "figwheel.main"]}}
+ :deps {org.clojure/clojure {:mvn/version "1.10.0-beta3"}
+        org.clojure/clojurescript {:mvn/version "1.10.520"}
+        reagent {:mvn/version "0.8.1"}
+        re-frame {:mvn/version "0.10.6"}
+        day8.re-frame/http-fx {:mvn/version "0.1.6"}
+        com.andrewmcveigh/cljs-time {:mvn/version "0.5.2"}
+        com.taoensso/tempura  {:mvn/version "1.2.1"}
+        org.eclipse.jgit      {:mvn/version "5.3.0.201903130848-r"}
+        secretary             {:mvn/version "1.2.3"}
+        re-frisk              {:mvn/version "0.5.4"}
+        com.bhauman/figwheel-main {:mvn/version "0.2.0"}
+        com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}}}
