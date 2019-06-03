@@ -1,0 +1,27 @@
+{
+  "name": "webman",
+  "version": "1.0.0",
+  "description": "Static web application compiler",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/devheroes/webman.git"
+  },
+  "author": "",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://gitlab.com/devheroes/webman/issues"
+  },
+  "homepage": "https://gitlab.com/devheroes/webman#README",
+  "dependencies": {
+    "create-react-class": "^15.6.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}

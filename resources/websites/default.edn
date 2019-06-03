@@ -1,4 +1,5 @@
 {
+ :debug true
  :home-fn [home/index]
  :api-base-url "https://devheroes.club"
  :latest-posts-url "/c/offtopic/l/latest.json"
@@ -21,4 +22,10 @@
 
  :footer [:p [:a {:href "#"} "devheroes"] "somethin"]
 
- :news-title (t [:latest-news "Latest news"])}
+ :news-title (t [:latest-news "Latest news"])
+ :webman/pages {:index {:title "Webman Home Page"
+                        :view :webman.pages/index
+                        :url ""}
+                :about {:title "About Webman"
+                        :url "about"
+                        :view :about}}}

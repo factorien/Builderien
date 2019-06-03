@@ -19,8 +19,6 @@
             [clojure.edn :as edn]
             [webman.config.readers :as r]))
 
-
-
 (defn website-name
   "Return the website name from WEBMAN_WEBSITE env variable"
   ([] (website-name "iranclojure.ir"))
@@ -51,10 +49,3 @@
   (let [component (format "[webman.views.indexes.%s/index]"
                           (website-name "default-website"))]
     `~component))
-
-(defmacro for-current-website
-  [panel & body]
-  (let [component (format "[webman.views.indexes.%s/index]" (website-name "default-website"))]
-    `(case ~panel
-       :home-panel ~component
-       ~@body)))

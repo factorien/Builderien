@@ -14,13 +14,16 @@
 ;;                        [:div]))
 
 
-(defn- panels [panel]
+(defn- pages [panel]
   (case panel
-    :home-panel (get-config :home-fn)
-    [:div]))
+    :webman.pages/index (get-config :home-fn)
+    [:div [:h1 "404"]]))
 
-(defn show-panel [panel-name]
-  [panels panel-name])
+(defn render-page
+  [panel-name]
+  (println "333333333")
+  (println panel-name)
+  [pages panel-name])
 
 
 (defn hero
@@ -41,11 +44,11 @@
 
 
 (defn main-panel []
-  (let [active-panel (re-frame/subscribe [:active-panel])]
+  (let [active-page (re-frame/subscribe [:active-page])]
     (fn []
       [:div
        [nav/bar]
        [hero]
        [:div {:className "container"}
-        [show-panel @active-panel]]
+        [render-page @active-page]]
        [footer/bar]])))

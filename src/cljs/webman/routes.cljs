@@ -1,25 +1,25 @@
 (ns webman.routes
-  (:require-macros [secretary.core :refer [defroute]])
-  (:import goog.History)
-  (:require [secretary.core :as secretary]
-            [goog.events :as events]
-            [goog.history.EventType :as EventType]
-            [re-frame.core :as re-frame]))
+  (:require-macros
+   [webman.config :refer [map-pages page-routes]])
+  (:require
+   [reitit.core :as r]
+   [reitit.frontend :as rtf]
+   [reitit.frontend.history :as rtfh]
+   [reitit.frontend.easy :as rtfe]
+   [reitit.coercion.schema :as rsc]
+   [re-frame.core :as re-frame]))
 
-(defn hook-browser-navigation! []
-  (doto (History.)
-    (events/listen
-     EventType/NAVIGATE
-     (fn [event]
-       (secretary/dispatch! (.-token event))))
-    (.setEnabled true)))
+(def routes
+  (rtf/router
+   (reduce (fn [routes page]
+             (conj routes [(:url page) (:view page)]))
+           ["/"]
+           (page-routes))
+   {:data {:coercion rsc/coercion}}))
 
-(defn app-routes []
-  (secretary/set-config! :prefix "#")
-  ;; --------------------
-  ;; define routes here
-  (defroute "/" []
-    (re-frame/dispatch [:set-active-panel :home-panel]))
-
-  ;; --------------------
-  (hook-browser-navigation!))
+(defn app-routes
+  []
+  (rtfe/start! routes
+               (fn [m]
+                 (re-frame/dispatch [:set-active-page (:name (:data m))]))
+               {:use-fragment false}))

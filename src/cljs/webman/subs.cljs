@@ -3,10 +3,10 @@
   (:require [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub
- :active-panel
+ :active-page
  (fn [db _]
-   (js/console.log "active-panel")
-   (:active-panel db)))
+   (js/console.log "active-page" (:active-page db))
+   (:active-page db)))
 
 (re-frame/reg-sub
  :topics

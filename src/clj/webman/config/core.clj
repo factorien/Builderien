@@ -27,21 +27,32 @@
    (or (System/getenv "WEBMAN_WEBSITE") default)))
 
 
+(defn website-config
+  "Return the configuration of the current website (WEBSITE_WEBMAN)
+   by merging the defualt configuration and the website configuration."
+  []
+  (let [config-name (format "websites/%s.edn" (website-name))
+        resource    (io/resource config-name)
+        defaults    (edn/read-string {:readers r/edn-readers}
+                                     (slurp (io/resource "websites/default.edn")))]
+    (merge defaults (edn/read-string {:readers r/edn-readers}
+                                     (slurp resource)))))
+
 (defn get-config
   "Return the value of the given config `key` by reading the proper
   configuration file of the current website (set in WEBMAN_WEBSITE)
   or if the key is missing it would return the value from `default.edn`
   "
   [key]
-  (let [config-name (format "websites/%s.edn" (website-name))
-        resource    (io/resource config-name)
-        defaults    (edn/read-string {:readers r/edn-readers}
-                                     (slurp (io/resource "websites/default.edn")))
-        config      (merge defaults (edn/read-string {:readers r/edn-readers}
-                                                     (slurp resource)))]
-    (get config key)))
+  (get (website-config) key))
+
+(defn get-page-config
+  "Return the page configuration for the given `page-id`."
+  [page-id]
+  (get (get-config :webman/pages) page-id))
 
 
 (defn map-pages
+  "Map over all the pages and invoke the given function `f` on each of them."
   [f]
   (map f (get-config :webman/pages)))

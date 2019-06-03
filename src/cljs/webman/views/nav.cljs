@@ -1,6 +1,7 @@
 (ns webman.views.nav
   (:require
-   [webman.i18n :refer [t]])
+   [webman.i18n :refer [t]]
+   [accountant.core :as accountant])
   (:require-macros
    [webman.website :refer [get-config]]))
 
@@ -36,7 +37,7 @@
        ^{:key item}
 
        [:a {:className (:class item)
-            :href      (:href item)}
+            :href (:href item)}
         [:span
          (when (:icon item)
            [:i {:className (:icon item)}])

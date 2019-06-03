@@ -26,6 +26,11 @@
   [key]
   (c/get-config key))
 
-(defmacro map-pages
-  [& body]
-  (c/map-pages (fn [page] page)))
+(defmacro page-routes
+  []
+  `[~@(map (fn [[name page]]
+             {:page name
+              :title (:title page)
+              :url (:url page)
+              :view (:view page)})
+           (get-config :webman/pages))])

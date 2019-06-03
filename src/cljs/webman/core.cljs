@@ -2,6 +2,7 @@
   (:require
    [day8.re-frame.http-fx]
    [reagent.core :as reagent]
+   [devtools.core :as devtools]
    [re-frame.core :as re-frame]
    [re-frisk.core :refer [enable-re-frisk!]]
    [webman.events]
@@ -15,6 +16,7 @@
   (when config/debug?
     (enable-console-print!)
     (enable-re-frisk!)
+    (devtools/install!)
     (println "dev mode")))
 
 (defn mount-root []
@@ -23,7 +25,10 @@
                   (.getElementById js/document "app")))
 
 (defn ^:export init []
+  (dev-setup)
   (routes/app-routes)
   (re-frame/dispatch-sync [:initialize-db])
-  (dev-setup)
+
   (mount-root))
+
+(defn ^:export reload! [])

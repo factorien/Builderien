@@ -2,7 +2,7 @@
   (:require-macros [webman.website :refer [get-config]]))
 
 (def debug?
-  ^boolean goog.DEBUG)
+  ^boolean (get-config :debug))
 
 (goog-define version "0.1.0")
 

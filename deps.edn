@@ -1,5 +1,7 @@
 {:paths ["src/clj" "resources" "target" "src/cljs"]
- :aliases {:fig {:main-opts ["-m" "figwheel.main"]}}
+ :aliases {:fig {:main-opts ["-m" "figwheel.main"]
+                 :extra-deps {binaryage/devtools {:mvn/version "0.9.10"}}}}
+
  :deps {org.clojure/clojure {:mvn/version "1.10.0-beta3"}
         org.clojure/clojurescript {:mvn/version "1.10.520"}
         reagent {:mvn/version "0.8.1"}
