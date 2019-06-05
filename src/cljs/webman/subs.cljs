@@ -5,7 +5,6 @@
 (re-frame/reg-sub
  :active-page
  (fn [db _]
-   (js/console.log "active-page" (:active-page db))
    (:active-page db)))
 
 (re-frame/reg-sub

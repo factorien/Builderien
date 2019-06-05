@@ -23,9 +23,13 @@
  :footer [:p [:a {:href "#"} "devheroes"] "somethin"]
 
  :news-title (t [:latest-news "Latest news"])
- :webman/pages {:index {:title "Webman Home Page"
-                        :view :webman.pages/index
-                        :url ""}
-                :about {:title "About Webman"
-                        :url "about"
-                        :view :about}}}
+ :webman/pages
+ {:index {:title "Webman Home Page"
+          :view :webman.pages/index
+          :url ""
+          :webman/layout
+          {:webman.views.layouts.stack/stack-view
+           {:options {} :args [:webman.views.dummy/title]}}}
+  :about {:title "About Webman"
+          :url "about"
+          :view :about}}}

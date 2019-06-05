@@ -5,8 +5,9 @@
    [webman.views.footer  :as footer]
    [webman.i18n          :refer [t]]
    [webman.views.nav     :as nav])
-  (:require-macros [webman.website :refer [get-config]]))
-
+  (:require-macros
+   [webman.website :refer [get-config]]
+   [webman.pages :refer [define-pages]]))
 
 ;; (defn- panels [panel-name]
 ;;   (for-current-website panel-name
@@ -20,10 +21,8 @@
     [:div [:h1 "404"]]))
 
 (defn render-page
-  [panel-name]
-  (println "333333333")
-  (println panel-name)
-  [pages panel-name])
+  [page]
+  [pages page])
 
 
 (defn hero
@@ -42,8 +41,16 @@
       [:div {:className "column is-half has-text-centered"}
        [:img {:className :logo :src (get-config :logo)}]]]]]])
 
+;;(define-pages)
 
-(defn main-panel []
+(require '[webman.views.dummy])
+(defn main-panel
+  []
+  (webman.views.dummy/title {}))
+  ;;(index-page-component))
+
+
+(defn main-panel1 []
   (let [active-page (re-frame/subscribe [:active-page])]
     (fn []
       [:div

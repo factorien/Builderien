@@ -1,7 +1,6 @@
 (ns webman.views.nav
   (:require
-   [webman.i18n :refer [t]]
-   [accountant.core :as accountant])
+   [webman.i18n :refer [t]])
   (:require-macros
    [webman.website :refer [get-config]]))
 
