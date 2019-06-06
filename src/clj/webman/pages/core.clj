@@ -47,6 +47,7 @@
                :else arg))
            args)))
 
+
 (comment
   ;; Must raise an error
   (component-call-stack :nameb.space/component  {}  nil)
@@ -86,3 +87,34 @@
   (reduce reduce-page-component
           []
           (c/get-config :webman/pages)))
+
+
+(defn collect-component-namespace
+  "Retun a collection of namespaces that have been used for the component
+  and its children."
+  [component-name args]
+  {:pre [(vector? args)]}
+  (reduce (fn [namespaces arg]
+            (cond
+              (map? arg) (let [component (first arg)]
+                           (concat namespaces
+                                 (component-call-stack-namespace
+                                  (first component)
+                                  (or (:args (second component)) []))))
+
+              (keyword? arg) (conj namespaces (namespace (symbol arg)))
+              :else namespaces))
+          [(namespace (symbol component-name))]
+          args))
+
+(defn extract-component-namespaces
+  "Extract all the namespaces that have been used in the given page."
+  [namespaces [page-name page-details]]
+  (let [layout (:webman/layout page-details)]
+    (reduce (fn [acc x]
+               (concat acc
+                       (component-call-stack-namespace
+                        (first x)
+                        (or (:args (second x)) []))))
+            namespaces
+            layout)))

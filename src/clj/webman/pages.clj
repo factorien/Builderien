@@ -19,6 +19,13 @@
    [webman.pages.core :as p]))
 
 
+(defn extract-namespaces
+  "Return a list of namespaces (clojurescript only) which are used
+  in the layouts of all the pages for the current website(WEBMAN_WEBSITE)."
+  []
+  (reduce p/extract-component-namespaces [] (p/get-pages)))
+
+
 (defmacro page-routes
   "Return the details of all the pages defined in the website configuration
   in the following format:
@@ -53,7 +60,4 @@
   `(do ~@(reduce p/reduce-page-component [] (p/get-pages))))
 
 (comment
-  (println (macroexpand-1 '(define-pages)))
-
-  (output is:)
-  (do (clojure.core/defn index-page-component [] (clojure.core/apply webman.views.layouts.stack/stack-view {} (clojure.core/apply webman.views.dummy/title {}))) (clojure.core/defn about-page-component [])))
+  (println (macroexpand-1 '(define-pages))))

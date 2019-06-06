@@ -4,7 +4,8 @@
    [webman.views.home    :as home]
    [webman.views.footer  :as footer]
    [webman.i18n          :refer [t]]
-   [webman.views.nav     :as nav])
+   [webman.views.nav     :as nav]
+   [webman.views.bindings])
   (:require-macros
    [webman.website :refer [get-config]]
    [webman.pages :refer [define-pages]]))
@@ -43,7 +44,6 @@
 
 ;;(define-pages)
 
-(require '[webman.views.dummy])
 (defn main-panel
   []
   (webman.views.dummy/title {}))

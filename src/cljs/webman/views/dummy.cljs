@@ -19,4 +19,4 @@
 
 (defn title
   [opts]
-  [:h1 "dummy component"])
+  [:h1 "dummy component1"])
