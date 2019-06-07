@@ -19,7 +19,7 @@
 ;; TODO: Find a better name, lay down the semantics first.
 (defn stack-view
   "Stack view component displays its children in vertical rows."
-  ^{:added 1.0.0}
+  ^{:added "1.0.0"}
   [& rows]
   (for [row rows]
     ^{:key row}
