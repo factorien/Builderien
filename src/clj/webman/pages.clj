@@ -48,10 +48,6 @@
            (p/get-pages))])
 
 
-(defmacro required-namespaces-for-pages
-  []
-  `[some.asd :as ss])
-
 (defmacro define-pages
   "Defines all the root components for all the pages in the website
   catalog based on the catelog description. Checkout `default.edn`

@@ -98,7 +98,7 @@
             (cond
               (map? arg) (let [component (first arg)]
                            (concat namespaces
-                                 (component-call-stack-namespace
+                                 (collect-component-namespace
                                   (first component)
                                   (or (:args (second component)) []))))
 
@@ -113,7 +113,7 @@
   (let [layout (:webman/layout page-details)]
     (reduce (fn [acc x]
                (concat acc
-                       (component-call-stack-namespace
+                       (collect-component-namespace
                         (first x)
                         (or (:args (second x)) []))))
             namespaces
