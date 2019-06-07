@@ -42,12 +42,15 @@
       [:div {:className "column is-half has-text-centered"}
        [:img {:className :logo :src (get-config :logo)}]]]]]])
 
-;;(define-pages)
+(println (macroexpand-1
+          '(define-pages)))
+
+(define-pages)
 
 (defn main-panel
   []
-  (webman.views.dummy/title {}))
-  ;;(index-page-component))
+  [index-page-component])
+
 
 
 (defn main-panel1 []

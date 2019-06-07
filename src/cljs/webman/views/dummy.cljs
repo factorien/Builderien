@@ -18,5 +18,5 @@
 
 
 (defn title
-  [opts]
+  [opts & children]
   [:h1 "dummy component1"])

@@ -29,7 +29,9 @@
           :url ""
           :webman/layout
           {:webman.views.layouts.stack/stack-view
-           {:options {} :args [:webman.views.dummy/title]}}}
+           {:options {} :args [:webman.views.dummy/title
+                               :webman.views.dummy/title
+                               {:webman.views.layouts.stack/stack-view {:options {} :args []}}]}}}
   :about {:title "About Webman"
           :url "about"
           :view :about}}}

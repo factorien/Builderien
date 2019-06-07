@@ -14,14 +14,18 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.views.layouts.stack)
+(ns webman.views.layouts.stack
+  (:require
+   [reagent.core :as r]))
+
 
 ;; TODO: Find a better name, lay down the semantics first.
 (defn stack-view
   "Stack view component displays its children in vertical rows."
   ^{:added "1.0.0"}
-  [& rows]
-  (for [row rows]
-    ^{:key row}
-    [:div {:className :columns}
-     row]))
+  [props & children]
+  [:div
+   (map-indexed (fn [index child]
+                  ^{:key index}
+                  [:div {:className :columns} child])
+                children)])
