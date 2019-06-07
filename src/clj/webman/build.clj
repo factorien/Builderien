@@ -71,7 +71,8 @@ NS))
   "Return a string ns form with all the namespaces that hav been used
   in the current website. (Via layouts and clojurescript only)."
   []
-  (let [namespaces (map (fn [x] (format "   [%s]" x)) (p/extract-namespaces))]
+  (let [namespaces (distinct (map (fn [x] (format "   [%s]" x))
+                                  (p/extract-namespaces)))]
     (clojure.string/replace ns-form-template
                             #"NS"
                             (clojure.string/join "\n" namespaces))))

@@ -38,32 +38,33 @@
     ~opts
     ~@(map (fn [arg]
              (cond
-               (map? arg) (let [component (first arg)]
-                            (component-call-stack (first component)
-                                                  (or (:options (second component)) {})
-                                                  (or (:args (second component)) [])))
+               (map? arg)
+               (component-call-stack (:fn arg)
+                                     (or (:options arg) {})
+                                     (or (:args arg) []))
+
                (keyword? arg) (component-call-stack arg {} [])
                :else arg))
            args)])
-
 
 (comment
   ;; Must raise an error
   (component-call-stack :nameb.space/component  {}  nil)
 
-  (component-call-stack :nameb.space/component  {}  [{:srg.sad/asd {:option {:a 1} :args [32 :asd]}}]))
+  (component-call-stack :nameb.space/component  {}  [{:fn :srg.sad/asd :option {:a 1} :args [32 :asd]}]))
 
 
 (defn page-layout
   [page-details]
   (let [layout (:webman/layout page-details)]
-    (map #(component-call-stack (first %)
-                                (:options (second %))
-                                (:args (second %)))
+    (map #(component-call-stack (:fn %)
+                                (:options %)
+                                (:args %))
          layout)))
 
 (comment
-  (page-layout (first (c/get-config :webman/pages))))
+  (page-layout (second (first (c/get-config :webman/pages)))))
+
 
 (defn page-component
   [[page-name page-details]]
@@ -95,14 +96,17 @@
   {:pre [(vector? args)]}
   (reduce (fn [namespaces arg]
             (cond
-              (map? arg) (let [component (first arg)]
-                           (concat namespaces
-                                 (collect-component-namespace
-                                  (first component)
-                                  (or (:args (second component)) []))))
+              (map? arg)
+              (concat namespaces
+                      (collect-component-namespace
+                       (:fn arg)
+                       (or (:args arg) [])))
 
-              (keyword? arg) (conj namespaces (namespace (symbol arg)))
+              (keyword? arg)
+              (conj namespaces (namespace (symbol arg)))
+
               :else namespaces))
+
           [(namespace (symbol component-name))]
           args))
 
@@ -113,7 +117,7 @@
     (reduce (fn [acc x]
                (concat acc
                        (collect-component-namespace
-                        (first x)
-                        (or (:args (second x)) []))))
+                        (:fn x)
+                        (or (:args x) []))))
             namespaces
             layout)))
