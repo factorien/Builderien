@@ -1,5 +1,5 @@
 {
-  "name": "webman",
+  "name": "builderien",
   "version": "1.0.0",
   "description": "Static web application compiler",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/devheroes/webman.git"
+    "url": "git+ssh://git@gitlab.com/devheroes/builderien.git"
   },
   "author": "",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://gitlab.com/devheroes/webman/issues"
+    "url": "https://gitlab.com/devheroes/builderien/issues"
   },
-  "homepage": "https://gitlab.com/devheroes/webman#README",
+  "homepage": "https://gitlab.com/devheroes/builderien#README",
   "dependencies": {
     "create-react-class": "^15.6.3",
     "react": "^16.8.6",

@@ -16,4 +16,4 @@ public/
 .cpcache/
 node_modules
 .shadow-cljs/
-src/cljs/webman/views/bindings.cljs
+src/cljs/builderien/views/bindings.cljs

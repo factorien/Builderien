@@ -4,7 +4,7 @@ A [re-frame](https://github.com/Day8/re-frame) application designed to build dif
 but different content using one build process.
 
 ## How it works ?
-Basically Webman created using several `clojure` macros which parse and provide the necessary information for the
+Basically Builderien created using several `clojure` macros which parse and provide the necessary information for the
 `clojurescript/re-frame` application in compile time based on the website.
 
 Clojure macros look for a environment variable called `WEBMAN_WEBSITE` that contains the domain name of the website and load the configuration

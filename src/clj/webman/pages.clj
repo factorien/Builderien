@@ -1,5 +1,5 @@
-;; Webman - Static website generator
-;; Copyright (C) 2018-2019  Webman's Developers
+;; Builderien - Static website generator
+;; Copyright (C) 2018-2019  Builderien's Developers
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License

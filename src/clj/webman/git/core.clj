@@ -1,4 +1,4 @@
-;; Webman - Static website generator
+;; Builderien - Static website generator
 ;; Copyright (C) 2018-2019  Sameer Rahmani <lxsameer@gnu.org>
 
 ;; This program is free software; you can redistribute it and/or
@@ -27,6 +27,6 @@
 
 
 (defn builderien-repository
-  "Return the Webman repository instance which is on the Filesystem."
+  "Return the Builderien repository instance which is on the Filesystem."
   []
   (repository (System/getProperty "user.dir")))

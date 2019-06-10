@@ -1,4 +1,4 @@
-;; Webman - Static website generator
+;; Builderien - Static website generator
 ;; Copyright (C) 2018-2019  Sameer Rahmani <lxsameer@gnu.org>
 
 ;; This program is free software; you can redistribute it and/or
@@ -22,7 +22,7 @@
 
 
 (defmacro last-commit
-  "Returns the SHA1 hash of the HEAD commit of Webman's master branch."
+  "Returns the SHA1 hash of the HEAD commit of Builderien's master branch."
   []
   (let [repo (core/builderien-repository)]
     `(str ~(.getName

@@ -24,7 +24,7 @@
 
  :news-title (t [:latest-news "Latest news"])
  :builderien/pages
- {:index {:title "Webman Home Page"
+ {:index {:title "Builderien Home Page"
           :view :builderien.pages/index
           :url ""
           :builderien/layout
@@ -34,6 +34,6 @@
                    :builderien.views.dummy/title
                    {:fn :builderien.views.layouts.stack/stack-view :options {} :args []}]}]}
 
-  :about {:title "About Webman"
+  :about {:title "About Builderien"
           :url "about"
           :view :about}}}
