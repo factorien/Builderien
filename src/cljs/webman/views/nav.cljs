@@ -1,8 +1,8 @@
-(ns webman.views.nav
+(ns builderien.views.nav
   (:require
-   [webman.i18n :refer [t]])
+   [builderien.i18n :refer [t]])
   (:require-macros
-   [webman.website :refer [get-config]]))
+   [builderien.website :refer [get-config]]))
 
 
 (def left-side-menu-items

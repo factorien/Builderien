@@ -14,7 +14,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.views.dummy)
+(ns builderien.views.dummy)
 
 
 (defn title

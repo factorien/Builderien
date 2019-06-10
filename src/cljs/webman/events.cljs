@@ -1,8 +1,8 @@
-(ns webman.events
+(ns builderien.events
   (:require [re-frame.core :as re-frame]
             [ajax.core     :as ajax]
-            [webman.db     :as db]
-            [webman.config :as config]))
+            [builderien.db     :as db]
+            [builderien.config :as config]))
 
 
 (re-frame/reg-event-db
@@ -22,7 +22,7 @@
      :http-xhrio {:method          :get
                   :uri             (config/latest-posts-url)
                   :params          {:api_key "4b971bf2488e0901402faa2dc238e1a42c0eac4aa6e28108114823273929eeea"
-                                    :api_username "webman"}
+                                    :api_username "builderien"}
                   :timeout         8000
                   :response-format (ajax/json-response-format {:keywords? true})
                   :on-success      [:populate-topics]

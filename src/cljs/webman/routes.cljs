@@ -1,6 +1,6 @@
-(ns webman.routes
+(ns builderien.routes
   (:require-macros
-   [webman.pages :refer [page-routes]])
+   [builderien.pages :refer [page-routes]])
   (:require
    [reitit.core :as r]
    [reitit.frontend :as rtf]

@@ -1,14 +1,14 @@
-(ns webman.views
+(ns builderien.views
   (:require
    [re-frame.core        :as re-frame]
-   [webman.views.home    :as home]
-   [webman.views.footer  :as footer]
-   [webman.i18n          :refer [t]]
-   [webman.views.nav     :as nav]
-   [webman.views.bindings])
+   [builderien.views.home    :as home]
+   [builderien.views.footer  :as footer]
+   [builderien.i18n          :refer [t]]
+   [builderien.views.nav     :as nav]
+   [builderien.views.bindings])
   (:require-macros
-   [webman.website :refer [get-config]]
-   [webman.pages :refer [define-pages]]))
+   [builderien.website :refer [get-config]]
+   [builderien.pages :refer [define-pages]]))
 
 ;; (defn- panels [panel-name]
 ;;   (for-current-website panel-name
@@ -18,7 +18,7 @@
 
 (defn- pages [panel]
   (case panel
-    :webman.pages/index (get-config :home-fn)
+    :builderien.pages/index (get-config :home-fn)
     [:div [:h1 "404"]]))
 
 (defn render-page

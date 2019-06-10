@@ -14,7 +14,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.config.readers)
+(ns builderien.config.readers)
 
 (defn asset
   "Reader function for `#asset` edn tag which append a random querystring

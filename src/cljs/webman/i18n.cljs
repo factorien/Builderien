@@ -1,4 +1,4 @@
-(ns webman.i18n
+(ns builderien.i18n
   (:require
    [taoensso.tempura :as tempura :refer [tr]]))
 

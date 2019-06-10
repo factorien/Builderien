@@ -14,13 +14,13 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.views.home
+(ns builderien.views.home
   (:require
    [re-frame.core :as re-frame]
-   [webman.time   :as time]
-   [webman.i18n   :refer [t]])
+   [builderien.time   :as time]
+   [builderien.i18n   :refer [t]])
   (:require-macros
-   [webman.config :refer [get-config]]))
+   [builderien.config :refer [get-config]]))
 
 (def digits
   {"1" "۱" "2" "۲" "3" "۳" "4" "۴" "5" "۵" "6" "۶" "7" "۷" "8" "۸" "9" "۹" "0" "۰"})

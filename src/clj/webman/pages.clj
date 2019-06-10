@@ -14,9 +14,9 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.pages
+(ns builderien.pages
   (:require
-   [webman.pages.core :as p]))
+   [builderien.pages.core :as p]))
 
 
 (defn extract-namespaces

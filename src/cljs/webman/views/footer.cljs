@@ -1,10 +1,10 @@
-(ns webman.views.footer
+(ns builderien.views.footer
   (:require
-   [webman.i18n :refer [t]])
+   [builderien.i18n :refer [t]])
 
   (:require-macros
-   [webman.website :refer [get-config]]
-   [webman.git :refer [last-commit]]))
+   [builderien.website :refer [get-config]]
+   [builderien.git :refer [last-commit]]))
 
 
 (defn bar

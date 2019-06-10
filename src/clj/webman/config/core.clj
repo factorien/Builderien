@@ -14,10 +14,10 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.config.core
+(ns builderien.config.core
   (:require [clojure.java.io :as io]
             [clojure.edn :as edn]
-            [webman.config.readers :as r]))
+            [builderien.config.readers :as r]))
 
 
 (defn website-name
@@ -49,10 +49,10 @@
 (defn get-page-config
   "Return the page configuration for the given `page-id`."
   [page-id]
-  (get (get-config :webman/pages) page-id))
+  (get (get-config :builderien/pages) page-id))
 
 
 (defn map-pages
   "Map over all the pages and invoke the given function `f` on each of them."
   [f]
-  (map f (get-config :webman/pages)))
+  (map f (get-config :builderien/pages)))

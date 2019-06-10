@@ -1,6 +1,6 @@
-(ns webman.core-test
+(ns builderien.core-test
   (:require [cljs.test :refer-macros [deftest testing is]]
-            [webman.core :as core]))
+            [builderien.core :as core]))
 
 (deftest fake-test
   (testing "fake description"

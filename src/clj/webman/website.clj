@@ -14,10 +14,10 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.website
+(ns builderien.website
   (:require [clojure.java.io :as io]
             [clojure.edn :as edn]
-            [webman.config.readers :as r]))
+            [builderien.config.readers :as r]))
 
 (defn website-name
   "Return the website name from WEBMAN_WEBSITE env variable"
@@ -42,10 +42,10 @@
 
 (defmacro require-index
   []
-  (format "[webman.views.indexes.%s :as %s]" (website-name) "home"))
+  (format "[builderien.views.indexes.%s :as %s]" (website-name) "home"))
 
 (defmacro current-index
   []
-  (let [component (format "[webman.views.indexes.%s/index]"
+  (let [component (format "[builderien.views.indexes.%s/index]"
                           (website-name "default-website"))]
     `~component))

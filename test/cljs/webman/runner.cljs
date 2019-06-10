@@ -1,5 +1,5 @@
-(ns webman.runner
+(ns builderien.runner
     (:require [doo.runner :refer-macros [doo-tests]]
-              [webman.core-test]))
+              [builderien.core-test]))
 
-(doo-tests 'webman.core-test)
+(doo-tests 'builderien.core-test)

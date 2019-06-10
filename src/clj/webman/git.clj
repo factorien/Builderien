@@ -14,8 +14,8 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.git
-  (:require [webman.git.core :as core]))
+(ns builderien.git
+  (:require [builderien.git.core :as core]))
 
 
 (def release-ref "refs/heads/master")
@@ -24,7 +24,7 @@
 (defmacro last-commit
   "Returns the SHA1 hash of the HEAD commit of Webman's master branch."
   []
-  (let [repo (core/webman-repository)]
+  (let [repo (core/builderien-repository)]
     `(str ~(.getName
             (.getObjectId
              (.exactRef repo release-ref))))))

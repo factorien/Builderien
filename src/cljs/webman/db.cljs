@@ -1,5 +1,5 @@
-(ns webman.db)
+(ns builderien.db)
 
 (def default-db
-  {:active-page :webman.pages/index
+  {:active-page :builderien.pages/index
    :topics []})

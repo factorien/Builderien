@@ -23,8 +23,8 @@
                 :source-map "resources/public/js/compiled/out/app.js.map"
                 :source-map-timestamp true
                 :external-config {:devtools/config {:features-to-install :all}}
-                :devtools {:after-load webman.core/reload!
+                :devtools {:after-load builderien.core/reload!
                            :http-root "resources/public/"
                            :http-port 3000}
-                :modules {:app {:entries [webman.core]}}
-                :main webman.core/init}}}
+                :modules {:app {:entries [builderien.core]}}
+                :main builderien.core/init}}}

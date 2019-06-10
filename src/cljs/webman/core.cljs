@@ -1,15 +1,15 @@
-(ns webman.core
+(ns builderien.core
   (:require
    [day8.re-frame.http-fx]
    [reagent.core :as reagent]
    [devtools.core :as devtools]
    [re-frame.core :as re-frame]
    [re-frisk.core :refer [enable-re-frisk!]]
-   [webman.events]
-   [webman.subs]
-   [webman.routes :as routes]
-   [webman.views :as views]
-   [webman.config :as config]))
+   [builderien.events]
+   [builderien.subs]
+   [builderien.routes :as routes]
+   [builderien.views :as views]
+   [builderien.config :as config]))
 
 
 (defn dev-setup []

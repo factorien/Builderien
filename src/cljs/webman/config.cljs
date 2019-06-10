@@ -1,5 +1,5 @@
-(ns webman.config
-  (:require-macros [webman.website :refer [get-config]]))
+(ns builderien.config
+  (:require-macros [builderien.website :refer [get-config]]))
 
 (def debug?
   ^boolean (get-config :debug))

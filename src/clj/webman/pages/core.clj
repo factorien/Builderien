@@ -14,15 +14,15 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.pages.core
+(ns builderien.pages.core
   (:require
-   [webman.config.core :as c]))
+   [builderien.config.core :as c]))
 
 
 (defn get-pages
   "Return all the pages and their configurations."
   []
-  (c/get-config :webman/pages))
+  (c/get-config :builderien/pages))
 
 
 (defn component-call-stack
@@ -56,14 +56,14 @@
 
 (defn page-layout
   [page-details]
-  (let [layout (:webman/layout page-details)]
+  (let [layout (:builderien/layout page-details)]
     (map #(component-call-stack (:fn %)
                                 (:options %)
                                 (:args %))
          layout)))
 
 (comment
-  (page-layout (second (first (c/get-config :webman/pages)))))
+  (page-layout (second (first (c/get-config :builderien/pages)))))
 
 
 (defn page-component
@@ -74,7 +74,7 @@
        ~@layout)))
 
 (comment
-  (page-component (first (c/get-config :webman/pages))))
+  (page-component (first (c/get-config :builderien/pages))))
 
 
 (defn reduce-page-component
@@ -86,7 +86,7 @@
 (comment
   (reduce reduce-page-component
           []
-          (c/get-config :webman/pages)))
+          (c/get-config :builderien/pages)))
 
 
 (defn collect-component-namespace
@@ -113,7 +113,7 @@
 (defn extract-component-namespaces
   "Extract all the namespaces that have been used in the given page."
   [namespaces [page-name page-details]]
-  (let [layout (:webman/layout page-details)]
+  (let [layout (:builderien/layout page-details)]
     (reduce (fn [acc x]
                (concat acc
                        (collect-component-namespace

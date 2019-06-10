@@ -1,4 +1,4 @@
-(defproject webman "0.3.1"
+(defproject builderien "0.3.1"
   :dependencies [[org.clojure/clojure "1.10.0-beta3"]
                  [org.clojure/clojurescript "1.10.520"]
                  [reagent               "0.8.1"]
@@ -53,9 +53,9 @@
    [{:id           "dev"
      :source-paths ["src/cljs"]
 
-     :figwheel     {:on-jsload "webman.core/mount-root"}
+     :figwheel     {:on-jsload "builderien.core/mount-root"}
 
-     :compiler     {:main                 webman.core
+     :compiler     {:main                 builderien.core
                     :preloads             [devtools.preload
                                            re-frisk.preload
                                            day8.re-frame-10x.preload]
@@ -66,23 +66,23 @@
 
                     :closure-defines {goog.DEBUG                            true
                                       "re_frame.trace.trace_enabled_QMARK_" true
-                                      "webman.views.home.version"           "dev"}
+                                      "builderien.views.home.version"           "dev"}
 
                     :external-config      {:devtools/config {:features-to-install :all}}}}
 
 
     {:id           "min"
      :source-paths ["src/cljs"]
-     :compiler     {:main            webman.core
+     :compiler     {:main            builderien.core
                     :output-to       "resources/public/js/compiled/app.js"
                     :optimizations   :advanced
                     :closure-defines {goog.DEBUG false
-                                      "webman.views.home.version" "0.3.1"}
+                                      "builderien.views.home.version" "0.3.1"}
                     :pretty-print    false}}
 
     {:id           "test"
      :source-paths ["src/cljs" "test/cljs"]
-     :compiler     {:main          webman.runner
+     :compiler     {:main          builderien.runner
                     :output-to     "resources/public/js/compiled/test.js"
                     :output-dir    "resources/public/js/compiled/test/out"
                     :optimizations :none}}]})

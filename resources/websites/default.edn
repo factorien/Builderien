@@ -23,16 +23,16 @@
  :footer [:p [:a {:href "#"} "devheroes"] "somethin"]
 
  :news-title (t [:latest-news "Latest news"])
- :webman/pages
+ :builderien/pages
  {:index {:title "Webman Home Page"
-          :view :webman.pages/index
+          :view :builderien.pages/index
           :url ""
-          :webman/layout
-          [{:fn :webman.views.layouts.stack/stack-view
+          :builderien/layout
+          [{:fn :builderien.views.layouts.stack/stack-view
             :options {}
-            :args [:webman.views.dummy/title
-                   :webman.views.dummy/title
-                   {:fn :webman.views.layouts.stack/stack-view :options {} :args []}]}]}
+            :args [:builderien.views.dummy/title
+                   :builderien.views.dummy/title
+                   {:fn :builderien.views.layouts.stack/stack-view :options {} :args []}]}]}
 
   :about {:title "About Webman"
           :url "about"

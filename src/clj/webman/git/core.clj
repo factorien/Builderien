@@ -14,7 +14,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns webman.git.core
+(ns builderien.git.core
   (:import
    [org.eclipse.jgit.api Git]
    [java.io File]))
@@ -26,7 +26,7 @@
   (.getRepository (Git/open (File. (str path "/.git")))))
 
 
-(defn webman-repository
+(defn builderien-repository
   "Return the Webman repository instance which is on the Filesystem."
   []
   (repository (System/getProperty "user.dir")))
