@@ -10,3 +10,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Webman namespaces have been renamed to builderien
 - `webman` package name has been renamed to `builderien`
 - `WEBMAN_WEBSITE` environment variable has been renamed to `BUILDERIEN_WEBSITE`
+- `builderien.core/reload!` function has been changed to mount the root component on
+  `after-reload`

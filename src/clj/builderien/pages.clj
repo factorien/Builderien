@@ -47,6 +47,9 @@
               :view (:view page)})
            (p/get-pages))])
 
+(comment
+  (macroexpand-1 '(page-routes)))
+
 
 (defmacro define-pages
   "Defines all the root components for all the pages in the website
