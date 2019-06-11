@@ -35,9 +35,11 @@
 ;; of UI components based on the build configuration.
 (define-pages)
 
+;; TODO: Create a macro to define a mapping between page keywords to
+;;       their corresponding components and use this mapping int the
+;;       `main` function to load the correct component for each page.
 
 (defn main
   []
   (let [active-page (re-frame/subscribe [:active-page])]
-    (println "asdasd" @active-page)
     [:h1 @active-page]))

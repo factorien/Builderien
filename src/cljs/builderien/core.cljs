@@ -68,3 +68,27 @@
   []
   (println "Remounting the root component")
   (mount-root))
+
+
+(comment
+  ;; Note: You can evaluate each of the following expressions
+  ;; in any file or in the repl.
+
+  ;; Start the CLJS repl from CLJ REPL.
+  (shadow.user.shadow/repl :app)
+
+  ;; Compile the `:app` in development mode and watch for changes
+  (shadow.user.shadow/watch :app)
+
+  ;; Or the verbose option
+  (shadow/watch :app {:verbose true})
+
+  ;; If you just want to compile the frontend app.
+  (shadow/compile :app)
+
+  ;; If you want to release the frontend app. We might not have a release
+  ;; for sometime
+  (shadow/release :app)
+
+  ;; Exit from CLJS repl.
+  :cljs/quit)
