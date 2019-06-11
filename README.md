@@ -1,4 +1,4 @@
-# WebMan
+# Builderien
 
 A [re-frame](https://github.com/Day8/re-frame) application designed to build different websites sharing same structure
 but different content using one build process.
@@ -7,7 +7,7 @@ but different content using one build process.
 Basically Builderien created using several `clojure` macros which parse and provide the necessary information for the
 `clojurescript/re-frame` application in compile time based on the website.
 
-Clojure macros look for a environment variable called `WEBMAN_WEBSITE` that contains the domain name of the website and load the configuration
+Clojure macros look for a environment variable called `BUIDERIEN_WEBSITE` that contains the domain name of the website and load the configuration
 for the given website from `./resources/websites/WEBSITE_WEBSITE.edn` and load the stylesheet from `./sass/WEBSITE_WEBSITE.sass`.
 
 So basically in order to add support for a new website all you have to do is to create those two files and set the environment variable.
@@ -20,7 +20,7 @@ If you use Emacs, navigate to a clojurescript file and start a figwheel REPL wit
 If you want to run the server on your terminal instead of Emacs just do as follows:
 
 ```
-$ WEBMAN_WEBSITE=example.com lein figwheel dev
+$ BUIDERIEN_WEBSITE=example.com lein figwheel dev
 ```
 
 **NOTE**: replace `example.com` with the domain name of your website.
@@ -35,7 +35,7 @@ take leavrage of auto compiling the clojure macros as well.
 Compile css file automatically.
 
 ```
-WEBMAN_WEBSITE=example.com lein sass
+BUIDERIEN_WEBSITE=example.com lein sass
 ```
 
 **NOTE**: replace `example.com` with the domain name of your website.
@@ -55,9 +55,9 @@ The above command assumes that you have [phantomjs](https://www.npmjs.com/packag
 To compile clojurescript to javascript:
 
 ```
-WEBMAN_WEBSITE=example.com lein clean
-WEBMAN_WEBSITE=example.com lein sass-compile
-WEBMAN_WEBSITE=example.com lein cljsbuild once min
+BUIDERIEN_WEBSITE=example.com lein clean
+BUIDERIEN_WEBSITE=example.com lein sass-compile
+BUIDERIEN_WEBSITE=example.com lein cljsbuild once min
 ```
 
 ### Deployment

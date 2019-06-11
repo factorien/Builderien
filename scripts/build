@@ -17,9 +17,9 @@ for i in ${websites[@]}
 do
     echo "Building $i ..."
     mkdir -p public
-    WEBMAN_WEBSITE=$i lein clean
-    WEBMAN_WEBSITE=$i lein cljsbuild once min
+    BUIDERIEN_WEBSITE=$i lein clean
+    BUIDERIEN_WEBSITE=$i lein cljsbuild once min
     mkdir -p resources/public/css
-    WEBMAN_WEBSITE=$i lein sass-compile
+    BUIDERIEN_WEBSITE=$i lein sass-compile
     cp -r resources/public ./public/$i
 done

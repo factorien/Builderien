@@ -21,10 +21,10 @@
 
 
 (defn website-name
-  "Return the website name from WEBMAN_WEBSITE env variable"
+  "Return the website name from BUIDERIEN_WEBSITE env variable"
   ([] (website-name "iranclojure.ir"))
   ([default]
-   (or (System/getenv "WEBMAN_WEBSITE") default)))
+   (or (System/getenv "BUIDERIEN_WEBSITE") default)))
 
 
 (defn website-config
@@ -40,7 +40,7 @@
 
 (defn get-config
   "Return the value of the given config `key` by reading the proper
-  configuration file of the current website (set in WEBMAN_WEBSITE)
+  configuration file of the current website (set in BUIDERIEN_WEBSITE)
   or if the key is missing it would return the value from `default.edn`
   "
   [key]

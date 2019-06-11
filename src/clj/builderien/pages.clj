@@ -21,7 +21,7 @@
 
 (defn extract-namespaces
   "Return a list of namespaces (clojurescript only) which are used
-  in the layouts of all the pages for the current website(WEBMAN_WEBSITE)."
+  in the layouts of all the pages for the current website(BUIDERIEN_WEBSITE)."
   []
   (reduce p/extract-component-namespaces [] (p/get-pages)))
 

@@ -9,3 +9,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Forked Webman project
 - Webman namespaces have been renamed to builderien
 - `webman` package name has been renamed to `builderien`
+- `WEBMAN_WEBSITE` environment variable has been renamed to `BUILDERIEN_WEBSITE`
