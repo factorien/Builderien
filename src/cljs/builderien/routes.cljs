@@ -50,5 +50,5 @@
                (fn [route]
                  ;; TODO: Fix this function to be able to use `reitit` routes
                  ;;       at their fullest.
-                 (re-frame/dispatch [:set-active-page (:name (:data route))]))
+                 (re-frame/dispatch [:builderien.db/set-active-page (:name (:data route))]))
                {:use-fragment false}))

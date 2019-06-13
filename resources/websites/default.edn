@@ -25,7 +25,6 @@
  :news-title (t [:latest-news "Latest news"])
  :builderien/pages
  {:index {:title "Builderien Home Page"
-          :view :builderien.pages/index
           :url ""
           :builderien/layout
           [{:fn :builderien.views.layouts.stack/stack-view

@@ -1,5 +1,5 @@
 (ns builderien.db)
 
 (def default-db
-  {:active-page :builderien.pages/index
+  {::active-page ::empty
    :topics []})

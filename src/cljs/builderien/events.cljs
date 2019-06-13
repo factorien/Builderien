@@ -5,15 +5,19 @@
             [builderien.config :as config]))
 
 
+;; This even is responsible to set the initial value of the database defined in `db.cljs`
 (re-frame/reg-event-db
- :initialize-db
+ ::db/initialize-db
  (fn  [_ _]
    db/default-db))
 
+;; This event sets the active page (page key)
+;; the page key should exists in the `page->component` map
+;; in `views.cljs`
 (re-frame/reg-event-db
- :set-active-page
+ ::db/set-active-page
  (fn [db [_ active-page]]
-   (assoc db :active-page active-page)))
+   (assoc db ::db/active-page active-page)))
 
 (re-frame/reg-event-fx
   :fetch-topics

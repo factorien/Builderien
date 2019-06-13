@@ -44,7 +44,7 @@
              {:page name
               :title (:title page)
               :url (:url page)
-              :view (:view page)})
+              :view name})
            (p/get-pages))])
 
 (comment

@@ -6,9 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Forked Webman project
-- Webman namespaces have been renamed to builderien
-- `webman` package name has been renamed to `builderien`
-- `WEBMAN_WEBSITE` environment variable has been renamed to `BUILDERIEN_WEBSITE`
+- Forked Webman project.
+- Webman namespaces have been renamed to builderien.
+- `webman` package name has been renamed to `builderien`.
+- `WEBMAN_WEBSITE` environment variable has been renamed to `BUILDERIEN_WEBSITE`.
 - `builderien.core/reload!` function has been changed to mount the root component on
-  `after-reload`
+  `after-reload`.
+- `page->component` mapping has been added to `views.cljs`.
+- First stable version of routing has been done.
+- A dummy `not-found` component has been added.

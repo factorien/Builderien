@@ -21,9 +21,9 @@
 ;; TODO: Move this subscription to a new namespace
 ;;       dedicated for routing subscriptions
 (re-frame/reg-sub
- :active-page
+ :builderien.db/active-page
  (fn [db _]
-   (:active-page db)))
+   (:builderien.db/active-page db)))
 
 
 (re-frame/reg-sub

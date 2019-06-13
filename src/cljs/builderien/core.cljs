@@ -56,7 +56,7 @@
 
   ;; Dispatch :initialize-db event to populate the db with default
   ;; values. Checkout `builderien.events` for more info.
-  (re-frame/dispatch-sync [:initialize-db])
+  (re-frame/dispatch-sync [:builderien.db/initialize-db])
   (mount-root))
 
 

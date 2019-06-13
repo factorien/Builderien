@@ -16,9 +16,9 @@
 
 (ns builderien.views
   (:require
-   [re-frame.core            :as re-frame]
-   [builderien.i18n          :refer [t]]
-   [builderien.views.nav     :as nav]
+   [re-frame.core     :as re-frame]
+   [builderien.i18n   :refer [t]]
+   [builderien.config :as config]
    ;; We generate this namespace to only include those UI namespaces
    ;; which is used in the configuration file (build configuration edn file)
    [builderien.views.bindings])
@@ -35,13 +35,26 @@
 ;; of UI components based on the build configuration.
 (define-pages page->component)
 
-;; TODO: Create a macro to define a mapping between page keywords to
-;;       their corresponding components and use this mapping int the
-;;       `main` function to load the correct component for each page.
+
+;; TODO: Fix this component to be configurable with a decent default
+(defn not-found
+  []
+  [:div
+   [:h1 "404"]
+   [:a {:href "/"} "Home"]])
+
 
 (defn main
   []
-  (let [active-page (re-frame/subscribe [:active-page])
+  (let [active-page (re-frame/subscribe [:builderien.db/active-page])
         active-page-component (get page->component @active-page)]
-    (println "<<<" @active-page (type @active-page))
-    [active-page-component]))
+    (when config/debug?
+      (println "Active Page: " @active-page))
+
+    (if (= @active-page :builderien.db/empty)
+      ;; Initial empty state
+      [:span]
+      (if-not (nil? active-page-component)
+        [active-page-component]
+        ;; TODO: Make 404 page configurable via edn configuration
+        [not-found]))))
