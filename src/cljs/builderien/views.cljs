@@ -33,7 +33,7 @@
 ;; for each page in the build configuration in the following format:
 ;; `PAGENAME-page-component`. In each root component it defines a tree
 ;; of UI components based on the build configuration.
-(define-pages)
+(define-pages page->component)
 
 ;; TODO: Create a macro to define a mapping between page keywords to
 ;;       their corresponding components and use this mapping int the
@@ -41,5 +41,7 @@
 
 (defn main
   []
-  (let [active-page (re-frame/subscribe [:active-page])]
-    [:h1 @active-page]))
+  (let [active-page (re-frame/subscribe [:active-page])
+        active-page-component (get page->component @active-page)]
+    (println "<<<" @active-page (type @active-page))
+    [active-page-component]))

@@ -53,10 +53,14 @@
 
 (defmacro define-pages
   "Defines all the root components for all the pages in the website
-  catalog based on the catelog description. Checkout `default.edn`
-  for more information."
-  []
-  `(do ~@(reduce p/reduce-page-component [] (p/get-pages))))
+  catalog based on the catelog description along side with a mapping
+  from the page keys to their corresponding component (`mapping-name`).
+
+  Checkout `default.edn` for more information."
+  [mapping-name]
+  `(do ~@(reduce p/reduce-page-component [] (p/get-pages))
+       (def ~(symbol mapping-name) ~(p/page-name->page-fn))))
+
 
 (comment
-  (println (macroexpand-1 '(define-pages))))
+  (println (macroexpand-1 '(define-pages somename))))

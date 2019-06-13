@@ -19,6 +19,9 @@
    [builderien.config.core :as c]))
 
 
+(def default-component-suffix "-page-component")
+
+
 (defn get-pages
   "Return all the pages and their configurations."
   []
@@ -67,14 +70,26 @@
 
 
 (defn page-component
+  "Return a quoted form of defining a function for the given `page-name`
+  and `page-details`.
+
+  The function name would be like: `PAGE-NAME-page-component`."
   [[page-name page-details]]
   (let [layout (page-layout page-details)]
-    `(defn ~(symbol (str (name page-name) "-page-component"))
+    `(defn ~(symbol (str (name page-name) default-component-suffix))
        []
        ~@layout)))
 
 (comment
   (page-component (first (c/get-config :builderien/pages))))
+
+
+(defn page-name->page-fn
+  "Returns a mapping from page names to their component functions."
+  []
+  (reduce #(assoc %1 (first %2) (symbol (str (name (first %2)) default-component-suffix)))
+          {}
+          (get-pages)))
 
 
 (defn reduce-page-component
