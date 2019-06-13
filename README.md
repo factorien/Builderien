@@ -3,6 +3,21 @@
 A [re-frame](https://github.com/Day8/re-frame) application designed to build different websites sharing same structure
 but different content using one build process.
 
+## Dependencies
+Global dependencies:
+
+* NodeJS
+* shadow-cljs (`npm install -g shadow-cljs`)
+* npx (`npm install -g npx`)
+
+After installing global dependencies install the local dependencies using `npm` or `yarn` as follows:
+
+```
+$ yarn install
+# or
+$ npm install
+```
+
 ## How it works ?
 Basically Builderien created using several `clojure` macros which parse and provide the necessary information for the
 `clojurescript/re-frame` application in compile time based on the website.
@@ -62,3 +77,13 @@ BUIDERIEN_WEBSITE=example.com lein cljsbuild once min
 
 ### Deployment
 Pushing to `stable` branch will triggers the CI jobs for building and deploying all the websites.
+
+### Editor integration
+
+If you're using emacs make sure to add you NodeJS path to your `exec-path` as follows:
+
+
+```lisp
+;; In case of nodenv
+(add-to-list 'exec-path "/home/user/.nodenv/shims/")
+```
