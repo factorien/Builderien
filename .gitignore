@@ -17,3 +17,5 @@ public/
 node_modules
 .shadow-cljs/
 src/cljs/builderien/views/bindings.cljs
+.expo/
+target/

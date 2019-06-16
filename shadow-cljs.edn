@@ -28,8 +28,9 @@
                            :http-port 3000}
                 :modules {:app {:entries [builderien.core]}}
                 :main builderien.core/init}
+
           :mobile {:target :react-native
-                   :init-fn builderien.core/init-mobile
-                   :output-dir "app"
+                   :init-fn builderien.core/init
+                   :output-dir "mobile"
                    :devtools {:autoload true
                               :preloads [shadow.expo.keep-awake]}}}}
