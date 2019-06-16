@@ -27,4 +27,9 @@
                            :http-root "resources/public/"
                            :http-port 3000}
                 :modules {:app {:entries [builderien.core]}}
-                :main builderien.core/init}}}
+                :main builderien.core/init}
+          :mobile {:target :react-native
+                   :init-fn builderien.core/init-mobile
+                   :output-dir "app"
+                   :devtools {:autoload true
+                              :preloads [shadow.expo.keep-awake]}}}}

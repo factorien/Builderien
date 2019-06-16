@@ -7,22 +7,32 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/devheroes/builderien.git"
+    "url": "git+ssh://git@gitlab.com/factorien/builderien.git"
   },
   "author": "",
   "license": "GPL-2.0",
   "bugs": {
     "url": "https://gitlab.com/devheroes/builderien/issues"
   },
-  "homepage": "https://gitlab.com/devheroes/builderien#README",
+  "homepage": "https://gitlab.com/factorien/builderien#README",
   "dependencies": {
     "create-react-class": "^15.6.3",
     "process": "^0.11.10",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "expo": "^32.0.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0",
+    "shadow-cljs": "^2.8.8"
   }
 }

@@ -61,6 +61,5 @@
   `(do ~@(reduce p/reduce-page-component [] (p/get-pages))
        (def ~(symbol mapping-name) ~(p/page-name->page-fn))))
 
-
 (comment
   (println (macroexpand-1 '(define-pages somename))))
