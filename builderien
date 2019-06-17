@@ -1,0 +1,66 @@
+#! /bin/bash
+# Builderien - Static website generator
+# Copyright (C) 2018-2019  Factorien Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.
+set -e
+
+BUILDERIEN_VERION='1.0.0-SNAPSHOT'
+PROJECT_ROOT=`pwd`
+
+# Global subcommands hashmap
+declare -A commands
+declare -A help_messages
+
+source ./scripts/utils.sh
+# CLJ related functions
+source ./scripts/clj.sh
+
+
+# ./scripts/clj.sh ============================================================
+commands[install-clj]=install_clj
+help_messages[install-clj]="Downloads and install 'clj' tool local to the project."
+
+commands[clj]=run_clj
+help_messages[clj]="Execute local 'clj' tool and pass any extra argument to it"
+
+
+
+function help_message {
+    # Print usage message
+    echo "Builderien Version $BUILDERIEN_VERION."
+    echo
+    for command in "${!commands[@]}"; do
+        printf "%-12s - %s\n" "$command" "${help_messages[$command]}"
+    done
+}
+commands[help]=help_message
+help_messages['help']='Shows this message.'
+
+
+check_for_currect_root
+
+# Find and execute the subcommand
+if [ -n "$1" ]; then
+    command=${commands[$1]}
+    if [ -n "$command" ]; then
+        shift
+        eval $command $@
+    else
+        echo "Subcommant '$1' not found!"
+        help_message
+    fi
+else
+    help_message
+fi

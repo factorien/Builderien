@@ -19,3 +19,4 @@ node_modules
 src/cljs/builderien/views/bindings.cljs
 .expo/
 target/
+bin/clj/
