@@ -19,8 +19,7 @@ set -e
 export CLJ_PATH=$PROJECT_ROOT/bin/clj/
 export CLJ_BIN=$CLJ_PATH/bin/clj
 
-
-function install_clj {
+function install_clj_linux {
     # Installs CLJ cli tool local to the project
     mkdir -p $PROJECT_ROOT/tmp/
     rm -f "$PROJECT_ROOT/tmp/install-clj.sh"
@@ -30,6 +29,13 @@ function install_clj {
     echo "DONE"
 }
 
+function install_clj_stupid_mac {
+    brew install clojure
+}
+
+function install_clj {
+    depend_on_os "install_clj_linux" "install_clj_stupid_mac"
+}
 
 function run_clj {
     echo "Exechuting '$CLJ_BIN $@'"

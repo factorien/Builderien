@@ -22,3 +22,12 @@ function check_for_currect_root {
         exit 1
     fi
 }
+
+
+function depend_on_os {
+    if [ `uname` = "Linux" ]; then
+        eval $1
+    else
+        eval $2
+    fi
+}

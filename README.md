@@ -7,8 +7,10 @@ but different content using one build process.
 Global dependencies:
 
 * NodeJS
+* Yarn
 * shadow-cljs (`npm install -g shadow-cljs`)
 * npx (`npm install -g npx`)
+* OpenJDK >= 1.8
 
 After installing global dependencies install the local dependencies using `npm` or `yarn` as follows:
 
