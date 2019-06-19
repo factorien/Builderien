@@ -37,7 +37,7 @@
   vector."
   [component-name opts args]
   {:pre [(vector? args)]}
-  `[~(symbol (str component-name))
+  `[~(symbol (name component-name))
     ~opts
     ~@(map (fn [arg]
              (cond
