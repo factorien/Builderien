@@ -6,19 +6,22 @@ but different content using one build process.
 ## Dependencies
 Global dependencies:
 
-* NodeJS
+* NodeJS >= 9.x
 * Yarn
-* shadow-cljs (`npm install -g shadow-cljs`)
 * npx (`npm install -g npx`)
 * OpenJDK >= 1.8
+* rlwrap (Install via package manager, apt or brew)
 
-After installing global dependencies install the local dependencies using `npm` or `yarn` as follows:
+After installing global dependencies install the local dependencies using `./bin/setup.sh`  as follows:
 
 ```
-$ yarn install
-# or
-$ npm install
+$ ./bin/setup.sh
 ```
+
+**NOTE**: Make sure that you're not `root` user and you're in the root directory of the project.
+
+Then you need to use `./bin/env.sh` to setup the `PATH` and some useful aliases to help you with your
+development. **If you're not a contributor or just want to run the project you can skip this step.**
 
 ## How it works ?
 Basically Builderien created using several `clojure` macros which parse the provided configuration file (in `edn`)
