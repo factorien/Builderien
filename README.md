@@ -11,17 +11,13 @@ Global dependencies:
 * npx (`npm install -g npx`)
 * OpenJDK >= 1.8
 * rlwrap (Install via package manager, apt or brew)
+* clj tools ([installation guide](https://clojure.org/guides/getting_started#_clojure_installer_and_cli_tools))
 
-After installing global dependencies install the local dependencies using `./bin/setup.sh`  as follows:
+Then we need to install the local dependencies using `yarn`:
 
+```bash
+$ yarn install
 ```
-$ ./bin/setup.sh
-```
-
-**NOTE**: Make sure that you're not `root` user and you're in the root directory of the project.
-
-Then you need to use `./bin/env.sh` to setup the `PATH` and some useful aliases to help you with your
-development. **If you're not a contributor or just want to run the project you can skip this step.**
 
 ## How it works ?
 Basically Builderien created using several `clojure` macros which parse the provided configuration file (in `edn`)
@@ -55,11 +51,21 @@ BUIDERIEN_WEBSITE=example.com shadow-cljs release app
 Pushing to `stable` branch will triggers the CI jobs for building and deploying all the websites.
 
 ### Editor integration
+In order to integrate `Builderien` with your editor/IDE you need to make sure that `clj` tool and `npx`
+are in your `PATH` and accessable by your editor.
 
-If you're using emacs make sure to add you NodeJS path to your `exec-path` as follows:
+If you're using Emacs make sure to add you NodeJS path (in my case `/home/user/.nodenv/shims/` because i'm using
+nodenv ) to your `exec-path` as follows:
 
 
 ```lisp
 ;; In case of nodenv
 (add-to-list 'exec-path "/home/user/.nodenv/shims/")
+```
+
+Same goes for `clj`:
+
+```lisp
+;; In case of nodenv
+(add-to-list 'exec-path "/path/to/clj/installation/bin/")
 ```

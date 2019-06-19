@@ -20,3 +20,4 @@ src/cljs/builderien/views/bindings.cljs
 .expo/
 target/
 bin/clj/
+package-lock.json
