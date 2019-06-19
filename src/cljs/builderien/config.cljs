@@ -15,7 +15,8 @@
 ;; along with this program.
 
 (ns builderien.config
-  (:require-macros [builderien.website :refer [get-config]]))
+  (:require-macros
+   [builderien.website :refer [get-config]]))
 
 (def debug?
   ^boolean (or (get-config :debug) false))

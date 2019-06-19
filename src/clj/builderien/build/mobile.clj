@@ -15,4 +15,11 @@
 ;; along with this program.
 
 (ns builderien.build.mobile
-  (:require [cheshire.core :as json]))
+  (:require
+   [cheshire.core :as json]
+   [builderien.build.constants :as c]))
+
+(defn create-manifest
+  ([]
+   (create-manifest ""))
+  ([path]))

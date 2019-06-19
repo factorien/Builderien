@@ -37,7 +37,7 @@
   vector."
   [component-name opts args]
   {:pre [(vector? args)]}
-  `[~(symbol (name component-name))
+  `[~(symbol component-name)
     ~opts
     ~@(map (fn [arg]
              (cond
@@ -53,7 +53,6 @@
 (comment
   ;; Must raise an error
   (component-call-stack :nameb.space/component  {}  nil)
-
   (component-call-stack :nameb.space/component  {}  [{:fn :srg.sad/asd :option {:a 1} :args [32 :asd]}]))
 
 
