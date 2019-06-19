@@ -55,3 +55,22 @@
   (:require
 NS))
 ")
+
+(def default-mobile-manifest
+  {:expo
+   {:slug "Builderien"
+    :splash
+    {:image "../resources/public/assets/splash.png"
+     :resizeMode "contain"
+     :backgroundColor "#ffffff"}
+    :ios {:supportsTablet true}
+    :sdkVersion "32.0.0"
+    :name "Builderien"
+    :entryPoint "./mobile/index.js"
+    :privacy "public"
+    :assetBundlePatterns ["**/*"]
+    :orientation "portrait"
+    :icon "../resources/public/assets/icon.png"
+    :version "1.0.0"
+    :updates {:fallbackToCacheTimeout 0}
+    :platforms ["ios" "android"]}})
