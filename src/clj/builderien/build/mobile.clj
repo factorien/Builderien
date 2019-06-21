@@ -17,9 +17,24 @@
 (ns builderien.build.mobile
   (:require
    [cheshire.core :as json]
+   [builderien.config :as config]
    [builderien.build.constants :as c]))
+
 
 (defn create-manifest
   ([]
-   (create-manifest ""))
-  ([path]))
+   (create-manifest "" c/default-mobile-manifest))
+
+  ([manifest-data]
+   ;; Yeah i know joining using str is not great, but
+   ;; it's good enough for this use case.
+   (create-manifest manifest-data
+                    (str (config/target-directory) "/manifest.json")))
+
+  ([manifest-data path]
+   (spit path
+         (json/generate-string (merge c/default-mobile-manifest
+                                      manifest-data)))))
+
+(comment
+  (create-manifest {:som "asd"} "/home/lxsameer/ss.json"))

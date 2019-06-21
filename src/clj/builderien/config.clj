@@ -25,3 +25,11 @@
   "
   [key]
   (c/get-config key))
+
+(defn target-directory
+  []
+  (or (System/getProperty "builderien.target")
+      (str (System/getProperty "user.dir") "/target")))
+
+(comment
+  (target-directory))
