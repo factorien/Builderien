@@ -16,3 +16,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First stable version of routing has been done.
 - A dummy `not-found` component has been added.
 - Basic support for `react-native` through `expo` has been added.
+- `ancient` alias has been added to `deps.edn` to track old dependencies
