@@ -14,24 +14,22 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.
 
-(ns builderien.build.mobile
-  (:require
-   [cheshire.core :as json]
-   [builderien.config :as config]
-   [builderien.build.constants :as c]))
+(ns builderien.utils)
 
 
-(defn create-manifest
-  ([]
-   (create-manifest "" c/default-mobile-manifest))
+(defn release?
+  "Retun true if `builderien.release` system property is set to true."
+  []
+  (System/getProperty "builderien.release"))
 
-  ([manifest-data]
-   ;; Yeah i know joining using str is not great, but
-   ;; it's good enough for this use case.
-   (create-manifest manifest-data
-                    (str (config/target-directory) "/manifest.json")))
 
-  ([manifest-data path]
-   (spit path
-         (json/generate-string (merge c/default-mobile-manifest
-                                      manifest-data)))))
+(defmacro todo
+  "A macro that print out the given `msg` as a TODO in a nice way
+  both in Clojure and Clojurescript."
+  [msg]
+  (when-not (release?)
+    `(println (str "[" ~*ns* ":" ~(:line (meta &form))
+                   "] TODO: " ~msg))))
+
+(comment
+  (macroexpand-1 '(todo "example")))

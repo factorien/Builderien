@@ -17,6 +17,6 @@
 
           :mobile {:target :react-native
                    :init-fn builderien.core/init
-                   :output-dir "mobile"
+                   :output-dir "target"
                    :devtools {:autoload true
                               :preloads [shadow.expo.keep-awake]}}}}

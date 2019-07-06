@@ -60,17 +60,17 @@ NS))
   {:expo
    {:slug "Builderien"
     :splash
-    {:image "../resources/public/assets/splash.png"
+    {:image "./resources/public/images/splash.png"
      :resizeMode "contain"
      :backgroundColor "#ffffff"}
     :ios {:supportsTablet true}
     :sdkVersion "32.0.0"
     :name "Builderien"
-    :entryPoint "./mobile/index.js"
+    :entryPoint "./target/index.js"
     :privacy "public"
     :assetBundlePatterns ["**/*"]
     :orientation "portrait"
-    :icon "../resources/public/assets/icon.png"
+    :icon "./resources/public/images/icon.png"
     :version "1.0.0"
     :updates {:fallbackToCacheTimeout 0}
     :platforms ["ios" "android"]}})
